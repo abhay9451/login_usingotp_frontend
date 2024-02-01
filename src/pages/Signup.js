@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import OtpInput from 'react-otp-input';
-
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 //design
 import {
     TextField,
@@ -17,10 +18,15 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+
+//functions
+import { register } from '../api/user';
+
 const Signup = () => {
 
     //form status
-    const [contect, setContect] = useState("");
+    const navigate = useNavigate();
+    const [Contect, setContect] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -29,11 +35,11 @@ const Signup = () => {
 
     //phone validations
 
-    let hasValNumber = /^[0-9]{1,11}$/.test(contect);
+    let hasValNumber = /^[0-9]{1,11}$/.test(Contect);
 
 
     //email validations
-    let hasValEmail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
+    let hasValEmail = /^[a.-zA.-Z0.-9]+@[a.-zA.-Z0.-9]+\.[A-Za-z]+$/.test(email);
 
     // password validations
     let hasSixChar = password.length >= 6;
@@ -42,8 +48,35 @@ const Signup = () => {
     let hasNumber = /(.*[0-9].*)/.test(password);
     let hasSpecailChar = /(.*[^a-zA-Z0-9].*)/.test(password);
 
+    const handleRegister = async (e) => {
+        e.preventDefault();
 
-
+        if (!Contect || !email || !password || !confirmPassword || !otp) {
+            
+            return;
+          }
+      
+          
+          if (password !== confirmPassword) {
+            
+            return;
+          }
+    
+        try {
+            const res = await register({ Contect, email, password,otp });
+            if (res.error) {
+                console.error(res.error);
+                toast.error(res.error);
+            } else {
+                toast.success(res.message);
+                navigate("/login", { replace: true });
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error('An error occurred during registration.');
+        }
+    };
+    
 
     return (
         <div className='container mt-5 col-10 col-sm-8 col-md-6 col-lg-5'>
@@ -56,14 +89,14 @@ const Signup = () => {
                 <TextField size='small'
                     variant='outlined'
                     className='form-control'
-                    label="phone"
-                    value={contect}
+                    label="Contect"
+                    value={Contect}
                     onChange={(e) => setContect(e.target.value)}
 
                 />
                 <FormHelperText
-                    className={`ml-1 mt-1  ${!hasValNumber && contect !== '' ? 'text-danger' : 'text-success'}`}>
-                   {!hasValNumber && contect !== '' ? 'Enter a valid Contact number ' : ''}
+                    className={`ml-1 mt-1  ${!hasValNumber && Contect !== '' ? 'text-danger' : 'text-success'}`}>
+                   {!hasValNumber && Contect !== '' ? 'Enter a valid Contact number ' : ''}
                 </FormHelperText>
 
 
@@ -98,7 +131,7 @@ const Signup = () => {
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} endAdornment={
-                            <InputAdornment>
+                            <InputAdornment position="end">
                                 <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? (<VisibilityIcon />) : (<VisibilityOffIcon />)}
 
@@ -239,7 +272,11 @@ const Signup = () => {
 
 
             <div className='text-center mt-4'>
-                <Button variant='contained' disabled={!contect || !email || !password || !confirmPassword || !otp || password !== confirmPassword || !hasSixChar || !hasLowerChar || !hasUpparChar || !hasNumber || !hasSpecailChar || !hasValEmail}>Submit</Button>
+                <Button variant='contained' disabled={!Contect || !email || !password || !confirmPassword || !otp || password !== confirmPassword || !hasSixChar || !hasLowerChar || !hasUpparChar || !hasNumber || !hasSpecailChar || !hasValEmail}
+                
+                onClick={handleRegister}
+
+                >Submit</Button>
 
             </div>
 

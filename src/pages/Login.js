@@ -45,7 +45,7 @@ const Login = () => {
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} endAdornment={
-                            <InputAdornment>
+                            <InputAdornment position="end">
                                 <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? (<VisibilityIcon />) : (<VisibilityOffIcon />)}
 
