@@ -79,8 +79,8 @@ const Signup = () => {
     
 
     return (
-        <div className='container mt-5 col-10 col-sm-8 col-md-6 col-lg-5'>
-            <div className='text-center mb-5 alert alert-primary'>
+        <div className='container mt-5  pt-1 is-max-desktop'>
+            <div className='text-center mb-5  alert alert-primary '>
                 <label htmlFor="" className='h2'>Sign Up
                 </label>
             </div>
@@ -90,6 +90,7 @@ const Signup = () => {
                     variant='outlined'
                     className='form-control'
                     label="Contect"
+                    type= "tel"
                     value={Contect}
                     onChange={(e) => setContect(e.target.value)}
 
@@ -165,13 +166,13 @@ const Signup = () => {
                                 <span className="text-success">
                                     <CheckCircleIcon 
                                     className='mr-1'
-                                    fontSize='small'/>
+                                    fontSize='is-small'/>
                                   <small >one lower case</small>
                                 </span>
                             ) :(
                                 <span className='text-danger'>
                                     <CancelIcon className='mr-1'
-                                    fontSize='small'/>
+                                    fontSize='is-small'/>
                                     <small>one lower case</small>
 
                                 </span>
@@ -183,7 +184,7 @@ const Signup = () => {
                                 <span className="text-success">
                                     <CheckCircleIcon 
                                     className='mr-1'
-                                    fontSize='small'/>
+                                    fontSize='is-small'/>
                                   <small >one uppar case</small>
                                 </span>
                             ) :(

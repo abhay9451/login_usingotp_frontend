@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 //design
 import {
     TextField,
@@ -12,12 +13,36 @@ import {
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
+// function
+import { login } from '../api/user';
+
 const Login = () => {
+    const navigate = useNavigate();
 
     //form status
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        try {
+            const res = await login({ email, password });
+            if (res.error) {
+                console.error(res.error);
+                toast.error(res.error);
+            }
+            else {
+                toast.success(res.message);
+                navigate("/", { replace: true });
+            }
+
+        } catch (err) {
+            toast.error(err);
+        }
+    };
     return (
         <div className='container mt-5 col-10 col-sm-8 col-md-6 col-lg-5'>
             <div className='text-center mb-5 alert alert-primary'>
@@ -26,12 +51,12 @@ const Login = () => {
             </div>
             <div className='form-group'
             >
-                <TextField size='small' 
-                variant='outlined' 
-                className='form-control' 
-                label="Email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                <TextField size='small'
+                    variant='outlined'
+                    className='form-control'
+                    label="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
             </div>
@@ -57,7 +82,8 @@ const Login = () => {
 
             </div>
             <div className='text-center mt-4'>
-                <Button variant='contained' disabled={!email || !password}>Submit</Button>
+                <Button variant='contained' disabled={!email || !password}
+                    onClick={handleLogin}>Submit</Button>
 
             </div>
 

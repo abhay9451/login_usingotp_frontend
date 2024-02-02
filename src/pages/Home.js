@@ -23,14 +23,17 @@ const Home = () => {
         e.preventDefault();
 
         try {
+           
             const res = await generateotp({  email });
             if (res.error) {
                 console.error(res.error);
                 toast.error(res.error);
             } else {
+                
                 toast.success(res.message);
-                navigate.replace('/signup');
+                navigate("/signup", { replace: true });
             }
+           
         } catch (err) {
             console.error(err);
             toast.error('An error occurred during send otp.');
@@ -60,8 +63,10 @@ const Home = () => {
 
             <div className='text-center mt-4'>
                 <Button variant='contained' disabled={!email }
-                onClick={handlegenerateotp}
+                onClick={handlegenerateotp} 
+                
                 >Send</Button>
+                
 
             </div>
         </div>
