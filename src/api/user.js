@@ -76,7 +76,7 @@ export const logout = async () => {
   try {
     const res = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
       method : "GET",
-      Credentials: "include",
+      credentials: "include",
 
     });
     return await res.json();
