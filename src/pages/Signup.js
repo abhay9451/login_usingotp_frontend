@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import OtpInput from 'react-otp-input';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
+
 //design
 import {
     TextField,
@@ -86,88 +87,76 @@ const Signup = () => {
                 <label htmlFor="" className='h2'>Sign Up
                 </label>
             </div>
-            {/* <div className='form-group  
-            > */}
-            {/* <TextField size='small'
 
-                    variant='outlined'
-                    className='form-control '
-
-                    label="Contect"
-                    type="tel"
-                    value={Contect}
-                    onChange={(e) => setContect(e.target.value)}
-
-                /> */}
 
             <div className="form-group has-icons-left has-icons-right is-mb-5 pt-1">
-                <TextField className="form-control" size="small" type="tel"
-                    value={Contect} onChange={(e) => setContect(e.target.value)} label="Contact" />
-                <span className="icon is-small is-left">
-                    <i className="fas fa-envelope"></i>
-                </span>
-                <span className="icon is-small is-right">
-                    <i className="fas fa-check"></i>
-                </span>
+                <div className="control has-icons-right is-expanded">
+                    <TextField
+                        className="form-control"
+                        size="small"
+                        type="tel"
+                        value={Contect}
+                        onChange={(e) => setContect(e.target.value)}
+                        label="Contact"
+                    />
+                    <span className="icon is-small is-right">
+                        <i className="fas fa-phone"></i>
+                    </span>
+                </div>
+
+
                 <FormHelperText
                     className={`ml-1 mt-1  ${!hasValNumber && Contect !== '' ? 'text-danger' : 'text-success'}`}>
                     {!hasValNumber && Contect !== '' ? 'Enter a valid Contact number ' : ''}
                 </FormHelperText>
 
+            </div>
 
-
-
-                {/* <div className='form-group'
-            >
-                <TextField size='small'
-                    variant='outlined'
-                    className='form-control icon is-small is-left fas fa-envelope'
-                    label="Email"
-                    type='email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-
-                /> */}
-                <div className="form-group has-icons-left has-icons-right">
-                    <TextField className="form-control" size="small" type="email" variant="outlined"
-                        value={email} onChange={(e) => setEmail(e.target.value)} label="Email" />
-                    <span className="icon is-small is-left">
+            <div div className="form-group ">
+                <div className="control has-icons-right is-expanded">
+                    <TextField
+                        className="form-control has-icons-left has-icons-right"
+                        size="small"
+                        type="email"
+                        variant="outlined"
+                        value={email} onChange={(e) => setEmail(e.target.value)}
+                        label="Email"
+                    />
+                    <span className="icon is-small is-right">
                         <i className="fas fa-envelope"></i>
                     </span>
-                    <span className="icon is-small is-right">
-                        <i className="fas fa-check"></i>
+               
 
-                    </span>
-                    <FormHelperText
-                        className={`ml-1 mt-1 email-validation-text ${!hasValEmail && email !== '' ? 'text-danger' : 'text-success'}`}>
-                        {!hasValEmail && email !== '' ? 'Enter a valid email address' : ''}
-                    </FormHelperText>
-
-
+                <FormHelperText
+                    className={`ml-1 mt-1 email-validation-text ${!hasValEmail && email !== '' ? 'text-danger' : 'text-success'}`}>
+                    {!hasValEmail && email !== '' ? ('Enter a valid email address') : ''}
+                </FormHelperText>
+                </div>
+            </div>
 
 
-                    <div className='form-group'>
-                        <FormControl variant='outlined'
-                            size='small'
-                            className='form-control'>
-                            <InputLabel>Password</InputLabel>
-                            <OutlinedInput
-                                label="Password"
-                                type={showPassword ? "text" : "password"}
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)} endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
-                                            {showPassword ? (<VisibilityIcon />) : (<VisibilityOffIcon />)}
+            <div className='form-group'>
+                <FormControl variant='outlined'
+                    size='small'
+                    className='form-control'>
+                    <InputLabel>Password</InputLabel>
+                    <OutlinedInput
+                        label="Password"
+                        type={showPassword ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
+                                    {showPassword ? (<VisibilityIcon />) : (<VisibilityOffIcon />)}
 
 
-                                        </IconButton>
-                                    </InputAdornment>} />
+                                </IconButton>
+                            </InputAdornment>} />
 
-                        </FormControl>
+                </FormControl>
 
 
-                        {/* <div className="form-group has-icons-left ">
+                {/* <div className="form-group has-icons-left ">
                 <input className="form-control" variant='outlined' type="password"
                     value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                 <InputAdornment position="end">
@@ -188,148 +177,148 @@ const Signup = () => {
 
 
 
-                        {password && (
-                            <div className='ml-1' style={{ columns: 3 }}>
-                                <div>
-                                    {hasSixChar ? (
-                                        <span className="text-success">
-                                            <CheckCircleIcon
-                                                className='mr-1'
-                                                fontSize='small' />
-                                            <small >at least 6 characters</small>
-                                        </span>
-                                    ) : (
-                                        <span className='text-danger'>
-                                            <CancelIcon className='mr-1'
-                                                fontSize='small' />
-                                            <small>at least 6 characters</small>
+                {password && (
+                    <div className='ml-1' style={{ columns: 3 }}>
+                        <div>
+                            {hasSixChar ? (
+                                <span className="text-success">
+                                    <CheckCircleIcon
+                                        className='mr-1'
+                                        fontSize='small' />
+                                    <small >at least 6 characters</small>
+                                </span>
+                            ) : (
+                                <span className='text-danger'>
+                                    <CancelIcon className='mr-1'
+                                        fontSize='small' />
+                                    <small>at least 6 characters</small>
 
-                                        </span>
-                                    )}
+                                </span>
+                            )}
 
-                                </div>
-                                <div>
-                                    {hasLowerChar ? (
-                                        <span className="text-success">
-                                            <CheckCircleIcon
-                                                className='mr-1'
-                                                fontSize='is-small' />
-                                            <small >one lower case</small>
-                                        </span>
-                                    ) : (
-                                        <span className='text-danger'>
-                                            <CancelIcon className='mr-1'
-                                                fontSize='is-small' />
-                                            <small>one lower case</small>
+                        </div>
+                        <div>
+                            {hasLowerChar ? (
+                                <span className="text-success">
+                                    <CheckCircleIcon
+                                        className='mr-1'
+                                        fontSize='is-small' />
+                                    <small >one lower case</small>
+                                </span>
+                            ) : (
+                                <span className='text-danger'>
+                                    <CancelIcon className='mr-1'
+                                        fontSize='is-small' />
+                                    <small>one lower case</small>
 
-                                        </span>
-                                    )}
+                                </span>
+                            )}
 
-                                </div>
-                                <div>
-                                    {hasUpparChar ? (
-                                        <span className="text-success">
-                                            <CheckCircleIcon
-                                                className='mr-1'
-                                                fontSize='is-small' />
-                                            <small >one uppar case</small>
-                                        </span>
-                                    ) : (
-                                        <span className='text-danger'>
-                                            <CancelIcon className='mr-1'
-                                                fontSize='small' />
-                                            <small>one uppar case</small>
+                        </div>
+                        <div>
+                            {hasUpparChar ? (
+                                <span className="text-success">
+                                    <CheckCircleIcon
+                                        className='mr-1'
+                                        fontSize='is-small' />
+                                    <small >one uppar case</small>
+                                </span>
+                            ) : (
+                                <span className='text-danger'>
+                                    <CancelIcon className='mr-1'
+                                        fontSize='small' />
+                                    <small>one uppar case</small>
 
-                                        </span>
-                                    )}
+                                </span>
+                            )}
 
-                                </div>
-                                <div>
-                                    {hasNumber ? (
-                                        <span className="text-success">
-                                            <CheckCircleIcon
-                                                className='mr-1'
-                                                fontSize='small' />
-                                            <small >one number</small>
-                                        </span>
-                                    ) : (
-                                        <span className='text-danger'>
-                                            <CancelIcon className='mr-1'
-                                                fontSize='small' />
-                                            <small>one number</small>
+                        </div>
+                        <div>
+                            {hasNumber ? (
+                                <span className="text-success">
+                                    <CheckCircleIcon
+                                        className='mr-1'
+                                        fontSize='small' />
+                                    <small >one number</small>
+                                </span>
+                            ) : (
+                                <span className='text-danger'>
+                                    <CancelIcon className='mr-1'
+                                        fontSize='small' />
+                                    <small>one number</small>
 
-                                        </span>
-                                    )}
+                                </span>
+                            )}
 
-                                </div>
-                                <div>
-                                    {hasSpecailChar ? (
-                                        <span className="text-success">
-                                            <CheckCircleIcon
-                                                className='mr-1'
-                                                fontSize='small' />
-                                            <small >one special symbol</small>
-                                        </span>
-                                    ) : (
-                                        <span className='text-danger'>
-                                            <CancelIcon className='mr-1'
-                                                fontSize='small' />
-                                            <small>one special symbol</small>
+                        </div>
+                        <div>
+                            {hasSpecailChar ? (
+                                <span className="text-success">
+                                    <CheckCircleIcon
+                                        className='mr-1'
+                                        fontSize='small' />
+                                    <small >one special symbol</small>
+                                </span>
+                            ) : (
+                                <span className='text-danger'>
+                                    <CancelIcon className='mr-1'
+                                        fontSize='small' />
+                                    <small>one special symbol</small>
 
-                                        </span>
-                                    )}
+                                </span>
+                            )}
 
-                                </div>
-
-                            </div>
-                        )}
-                    </div>
-
-
-                    <div className='form-group'
-                    >
-                        <TextField size='small'
-                            variant='outlined'
-                            type='password'
-                            className='form-control'
-                            label="Confirm Password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)} />
-
-                        {password && confirmPassword && (
-                            <FormHelperText className='ml-1 mt-1'>
-                                {password === confirmPassword ? (<span className='text-success'>Password does match</span>) : (<span className='text-danger'>Password does not match</span>)}
-
-
-                            </FormHelperText>
-                        )}
-                    </div>
-                    <div className='form-group'>
-                        <OtpInput
-                            variant='outlined'
-                            className="form-control"
-                            value={otp}
-                            onChange={setOtp}
-                            numInputs={6}
-                            renderSeparator={<span>-----</span>}
-                            renderInput={(props) => <input {...props} />}
-                        />
+                        </div>
 
                     </div>
-
-
-
-                    <div className='text-center mt-4'>
-                        <Button variant='contained' disabled={!Contect || !email || !password || !confirmPassword || !otp || password !== confirmPassword || !hasSixChar || !hasLowerChar || !hasUpparChar || !hasNumber || !hasSpecailChar || !hasValEmail}
-
-                            onClick={handleRegister}
-
-                        >Submit</Button>
-
-                    </div>
-                </div>
+                )}
             </div>
-        </div>
+
+
+            <div className='form-group'
+            >
+                <TextField size='small'
+                    variant='outlined'
+                    type='password'
+                    className='form-control'
+                    label="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)} />
+
+                {password && confirmPassword && (
+                    <FormHelperText className='ml-1 mt-1'>
+                        {password === confirmPassword ? (<span className='text-success'>Password does match</span>) : (<span className='text-danger'>Password does not match</span>)}
+
+
+                    </FormHelperText>
+                )}
+            </div>
+            <div className='form-group'>
+                <OtpInput
+                    variant='outlined'
+                    className="form-control"
+                    value={otp}
+                    onChange={setOtp}
+                    numInputs={6}
+                    renderSeparator={<span>-----</span>}
+                    renderInput={(props) => <input {...props} />}
+                />
+
+            </div>
+
+
+
+            <div className='text-center mt-4'>
+                <Button variant='contained' disabled={!Contect || !email || !password || !confirmPassword || !otp || password !== confirmPassword || !hasSixChar || !hasLowerChar || !hasUpparChar || !hasNumber || !hasSpecailChar || !hasValEmail}
+
+                    onClick={handleRegister}
+
+                >Submit</Button>
+
+            </div>
+
+
+        </div >
     )
 }
 

@@ -44,23 +44,31 @@ const Login = () => {
         }
     };
     return (
-        <div className='container mt-5 col-10 col-sm-8 col-md-6 col-lg-5'>
+        <div className='container mt-5  pt-1 is-max-desktop'>
             <div className='text-center mb-5 alert alert-primary'>
                 <label htmlFor="" className='h2'>Login
                 </label>
             </div>
-            <div className='form-group'
-            >
-                <TextField size='small'
-                    variant='outlined'
-                    className='form-control'
-                    label="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-
+            <div div className="form-group ">
+                <div className="control has-icons-right is-expanded">
+                    <TextField
+                        className="form-control has-icons-left has-icons-right"
+                        size="small"
+                        type="email"
+                        variant="outlined"
+                        value={email} onChange={(e) => setEmail(e.target.value)}
+                        label="Email"
+                    />
+                    <span className="icon is-small is-right">
+                        <i className="fas fa-envelope"></i>
+                    </span>
+                </div>
             </div>
             <div className='form-group'>
+            {/* <p className="control has-icons-left is-expanded">
+            <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span> */}
                 <FormControl variant='outlined'
                     size='small'
                     className='form-control'>
@@ -79,7 +87,8 @@ const Login = () => {
                             </InputAdornment>} />
 
                 </FormControl>
-
+                
+                {/* </p> */}
             </div>
             <div className='text-center mt-4'>
                 <Button variant='contained' disabled={!email || !password}

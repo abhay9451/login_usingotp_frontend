@@ -41,7 +41,7 @@ const Home = () => {
     };
 
     return (
-        <div className='container mt-5 col-10 col-sm-8 col-md-6 col-lg-5'>
+        <div className='container mt-5  pt-1 is-max-desktop'>
             <div className='text-center mb-5 alert alert-primary'>
                 <label htmlFor="" className='h2'>Send OTP
                 </label>
