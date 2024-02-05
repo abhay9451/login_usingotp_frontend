@@ -47,6 +47,7 @@ const Home = () => {
                 </label>
             </div>
             <div className='form-group'>
+            <div className="control has-icons-right is-expanded">
                 <TextField size='small'
                     variant='outlined'
                     className='form-control'
@@ -54,6 +55,10 @@ const Home = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
+                <span className="icon is-small is-right">
+                        <i className="fas fa-envelope fa-lg"></i>
+                    </span>
+                    </div>
                 <FormHelperText
                     className={`ml-1 mt-1 email-validation-text ${!hasValEmail && email !== '' ? 'text-danger' : 'text-success'}`}>
                     {!hasValEmail && email !== '' ? 'Enter a valid email address' : ''}

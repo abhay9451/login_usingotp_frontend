@@ -16,6 +16,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 // function
 import { login } from '../api/user';
+import { TextFields } from '@mui/icons-material';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -60,7 +61,7 @@ const Login = () => {
                         label="Email"
                     />
                     <span className="icon is-small is-right">
-                        <i className="fas fa-envelope"></i>
+                        <i className="fas fa-envelope fa-lg"></i>
                     </span>
                 </div>
             </div>

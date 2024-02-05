@@ -100,7 +100,7 @@ const Signup = () => {
                         label="Contact"
                     />
                     <span className="icon is-small is-right">
-                        <i className="fas fa-phone"></i>
+                        <i className="fas fa-phone fa-lg"></i>
                     </span>
                 </div>
 
@@ -123,7 +123,7 @@ const Signup = () => {
                         label="Email"
                     />
                     <span className="icon is-small is-right">
-                        <i className="fas fa-envelope"></i>
+                        <i className="fas fa-envelope fa-lg"></i>
                     </span>
                
 
